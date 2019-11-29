@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,71 +19,21 @@ class Category
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $category;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Joke", mappedBy="category")
-     */
-    private $category_id;
-
-    public function __construct()
-    {
-        $this->category_id = new ArrayCollection();
-    }
+    private $name;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getCategory(): ?string
+    public function getName(): ?string
     {
-        return $this->category;
+        return $this->name;
     }
 
-    public function setCategory(string $category): self
+    public function setName(string $name): self
     {
-        $this->category = $category;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Joke[]
-     */
-    public function getCategoryId(): Collection
-    {
-        return $this->category_id;
-    }
-
-    /**
-     * @param Joke $categoryId
-     * @return Category
-     */
-
-    public function addCategoryId(Joke $categoryId): self
-    {
-        if (!$this->category_id->contains($categoryId)) {
-            $this->category_id[] = $categoryId;
-            $categoryId->setCategory($this);
-        }
-
-        return $this;
-    }
-    /**
-     * @param Joke $categoryId
-     * @return Category
-     */
-
-    public function removeCategoryId(Joke $categoryId): self
-    {
-        if ($this->category_id->contains($categoryId)) {
-            $this->category_id->removeElement($categoryId);
-            // set the owning side to null (unless already changed)
-            if ($categoryId->getCategory() === $this) {
-                $categoryId->setCategory(null);
-            }
-        }
+        $this->name = $name;
 
         return $this;
     }

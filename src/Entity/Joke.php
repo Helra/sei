@@ -47,7 +47,7 @@ class Joke
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\category", inversedBy="category_id")
+     * @ORM\ManyToOne(targetEntity="App\Entity\category")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
