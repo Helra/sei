@@ -5,6 +5,7 @@
 {% block body %}
 
 <section id="home">
+    <a href="{{ path('joke_new') }}"><button id="create-button">Je veux creer une citation pas trop longue ........</button></a>
     <h1 id="home-title">SEI</h1>
         {% for joke in jokes %}
         <div id="quotes">
@@ -17,8 +18,8 @@
                         <h3 class="author">{{ joke.category.name }}</h3>
                     </div>
                     <div class="bottom">
-                        <a href="{{ path('joke_incrementsFunny', {'id': joke.id}) }}">Drôle</a>
-                        <a href="{{ path('joke_incrementsLousy', {'id': joke.id}) }}">Nulle</a>
+                        <a href="{{ path('joke_incrementsFunny', {'id': joke.id}) }}"><button>Drôle</button></a>
+                        <a href="{{ path('joke_incrementsLousy', {'id': joke.id}) }}"><button>Nulle</button></a>
                         <h3 class="author">{{ joke.firstname }} {{ joke.lastname }}</h3>
                     </div>
                 </li>
@@ -29,7 +30,7 @@
                 <td colspan="8">no records found</td>
             </tr>
         {% endfor %}
-    <button id="create-button"><a href="{{ path('joke_new') }}">Je veux creer une citation pas trop longue ........</a></button>
+
 </section>
 
 

@@ -2,9 +2,9 @@ body {
     margin: 0;
     min-height: 100vh;
     height: 100vh;
-    background: linear-gradient(120deg, #5b7632, black);
+    background: linear-gradient( #337f44, black);
+    background-attachment: fixed;
     font-family: Arial;
-    overflow: hidden;
 }
 
 h1, h2, h3 {
@@ -45,7 +45,7 @@ ul li {
     filter: drop-shadow(0px 0px 20px #888);
     min-height: 100px;
     border-radius: 10px;
-    border: solid red 5px;
+    border: solid #9f4fff 5px;
     margin: 20px 0;
     background: #EEE;
     color: black;
@@ -181,4 +181,14 @@ h4.like
 h4.dislike
 {
     margin: 35px;
+}
+
+.title
+{
+    text-align: center;
+}
+
+.button_next
+{
+    margin : 40px;
 }
