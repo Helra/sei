@@ -3,9 +3,11 @@
 {% block title %}New Joke{% endblock %}
 
 {% block body %}
-    <h1 class="title">Create new Joke</h1>
+    <div class="styleForm">
+        <h1 class="title">Create new Joke</h1>
 
-    {{ include('joke/_form.html.twig') }}
+        {{ include('joke/_form.html.twig') }}
 
-    <a href="{{ path('joke_index') }}" class="button_next"><button>back to list</button></a>
+        <a href="{{ path('joke_index') }}" class="button_next"><button>back to list</button></a>
+    </div>
 {% endblock %}
