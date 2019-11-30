@@ -24,12 +24,13 @@ class JokeController extends AbstractController
      * @Route("/{filter?0}", name="joke_index", methods={"GET"})
      * @param JokeRepository $jokeRepository
      * @param CategoryRepository $categoryRepository
+     * @param int $filter
      * @return Response
      */
     public function index(JokeRepository $jokeRepository, CategoryRepository $categoryRepository, int $filter): Response
     {
         $categories = $categoryRepository->findAll();
-        if ($filter == 'all') {
+        if ($filter == 0) {
             $jokes = $jokeRepository->findAll();
         } else {
             $jokes = $jokeRepository->findBy(['category' => $filter]);
@@ -42,7 +43,7 @@ class JokeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="joke_new", methods={"GET","POST"})
+     * @Route("/joke/new", name="joke_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
      */
