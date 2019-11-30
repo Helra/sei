@@ -27,6 +27,8 @@ class JokeController extends AbstractController
 
     /**
      * @Route("/new", name="joke_new", methods={"GET","POST"})
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request): Response
     {
@@ -50,6 +52,8 @@ class JokeController extends AbstractController
 
     /**
      * @Route("/{id}", name="joke_show", methods={"GET"})
+     * @param Joke $joke
+     * @return Response
      */
     public function show(Joke $joke): Response
     {
