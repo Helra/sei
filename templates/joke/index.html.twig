@@ -37,7 +37,7 @@
 </section>
 <ul class="nav">
     {% for category in categories %}
-        <li><a href="{{ path('joke_index', {'filter': category.id}) }}">{{ category.name }}</a></li>
+        <li><a class="filterLink" href="{{ path('joke_index', {'filter': category.id}) }}">{{ category.name }}</a></li>
     {% endfor %}
 </ul>
 
