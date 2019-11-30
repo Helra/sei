@@ -17,8 +17,8 @@
                         <h3 class="author">{{ joke.category.name }}</h3>
                     </div>
                     <div class="bottom">
-                        <button>Like</button>
-                        <button>Dislike </button>
+                        <a href="{{ path('joke_incrementsFunny', {'id': joke.id}) }}">Drôle</a>
+                        <a href="{{ path('joke_incrementsLousy', {'id': joke.id}) }}">Nulle</a>
                         <h3 class="author">{{ joke.firstname }} {{ joke.lastname }}</h3>
                     </div>
                 </li>
