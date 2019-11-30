@@ -12,8 +12,14 @@
                 <li>
                     {{ joke.quote }}
                     <div class="bottom">
+                        <h4 class="like">{{ joke.funny }} </h4>
+                        <h4 class="dislike">{{ joke.lousy }}</h4>
+                        <h3 class="author">
+                        </h3>
+                    </div>
+                    <div class="bottom">
                         <button>Like</button>
-                        <button>Dislike</button>
+                        <button>Dislike </button>
                         <h3 class="author">{{ joke.firstname }} {{ joke.lastname }}</h3>
                     </div>
                 </li>
