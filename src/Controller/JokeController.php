@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
- * @Route("/joke")
+ * @Route("")
  */
 class JokeController extends AbstractController
 {
@@ -39,8 +39,11 @@ class JokeController extends AbstractController
     public function new(Request $request): Response
     {
         $joke = new Joke();
+        $joke->setFunny(0);
+        $joke->setLousy(0);
         $form = $this->createForm(JokeType::class, $joke);
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -123,14 +126,21 @@ class JokeController extends AbstractController
     }
 
     /**
-     * @Route("/{funny}/incrementslousy", name="joke_incrementsLousy", methods={"GET","POST"})
+     * @Route("/{id}/incrementslousy", name="joke_incrementsLousy", methods={"GET","POST"})
      * @param Request $request
      * @param Joke $joke
-     * @param ObjectManager $manager
      * @return Response
      */
-    public function lousy(Request $request, Joke $joke, ObjectManager $manager): Response
+    public function incrementsLousy(Request $request, Joke $joke, int $id, JokeRepository $jokeRepository, EntityManagerInterface $em): Response
     {
 
+        $joke = $jokeRepository->findOneBy(['id' => $id]);
+        $lousy = $joke->getLousy();
+        $lousy += 1;
+        $joke->setFunny($lousy);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($joke);
+        $em->flush();
+        return $this->redirectToRoute('app_index', []);
     }
 }

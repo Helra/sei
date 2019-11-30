@@ -1,4 +1,19 @@
+<div>
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    <div class="row">
+        <div class="col">
+            {{ form_row(form.quote) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_row(form.lastname) }}
+        </div>
+        <div class="col" id="some-custom-id">
+            {{ form_row(form.firstname) }}
+        </div>
+        <div>
+            {{ form_row(form.category) }}
+        </div>
+    </div>
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
+</div>
