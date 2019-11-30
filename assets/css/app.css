@@ -267,3 +267,46 @@ li.filter {
     background: none;
     border : none;
 }
+
+#sylvain, #ayoub {
+    position: absolute;
+    transition: all 15s linear;
+}
+
+#ayoub {
+    animation: infiniteRotateAyoub 6s infinite linear;
+}
+
+#sylvain {
+    animation: infiniteRotateSylvain 6s infinite linear;
+}
+
+@keyframes infiniteRotateAyoub {
+    0% {
+        transform: translate(-10vw, 50vh);
+    }
+    65% {
+        transform: translate(100vw, 20vh) rotate(360deg);
+    }
+    98% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes infiniteRotateSylvain {
+    0% {
+        transform: translate(100vw, 10vh);
+    }
+    65% {
+        transform: translate(-20vw, 60vh) rotate(360deg);
+    }
+    98% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
