@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Joke;
 use App\Form\JokeType;
+use App\Repository\CategoryRepository;
 use App\Repository\JokeRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManager;
@@ -20,14 +21,23 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class JokeController extends AbstractController
 {
     /**
-     * @Route("/", name="joke_index", methods={"GET"})
+     * @Route("/{filter?0}", name="joke_index", methods={"GET"})
      * @param JokeRepository $jokeRepository
+     * @param CategoryRepository $categoryRepository
      * @return Response
      */
-    public function index(JokeRepository $jokeRepository): Response
+    public function index(JokeRepository $jokeRepository, CategoryRepository $categoryRepository, int $filter): Response
     {
+        $categories = $categoryRepository->findAll();
+        if ($filter == 'all') {
+            $jokes = $jokeRepository->findAll();
+        } else {
+            $jokes = $jokeRepository->findBy(['category' => $filter]);
+        }
+
         return $this->render('joke/index.html.twig', [
-            'jokes' => $jokeRepository->findAll(),
+            'jokes' => $jokes,
+            'categories' => $categories,
         ]);
     }
 

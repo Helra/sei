@@ -210,3 +210,9 @@ h4.dislike
     object-fit: contain;
     transform: rotate(35deg);
 }
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}

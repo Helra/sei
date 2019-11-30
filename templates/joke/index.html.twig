@@ -7,7 +7,7 @@
 <section id="home">
     <a href="{{ path('joke_new') }}"><button id="create-button">Je veux creer une citation pas trop longue ........</button></a>
     <h1 id="home-title">SEI</h1>
-    <img class="logoWild" src="{{ asset('build/images/wild.c3e2105d.png') }}">
+    <a href="{{ path('joke_index') }}"><img class="logoWild" src="{{ asset('build/images/wild.c3e2105d.png') }}"></a>
         {% for joke in jokes %}
         <div id="quotes">
             <ul>
@@ -35,6 +35,10 @@
         {% endfor %}
 
 </section>
-
+<ul class="nav">
+    {% for category in categories %}
+        <li><a href="{{ path('joke_index', {'filter': category.id}) }}">{{ category.name }}</a></li>
+    {% endfor %}
+</ul>
 
 {% endblock %}
