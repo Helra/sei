@@ -14,6 +14,7 @@
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+<<<<<<< HEAD
 
 ###> symfony/webpack-encore-bundle ###
 /node_modules/
@@ -21,3 +22,6 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+=======
+/node_modules/
+>>>>>>> df2ddab7010edb5f0f3332def83b3706671597dd
