@@ -121,7 +121,7 @@ class JokeController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $em->persist($joke);
         $em->flush();
-        return $this->redirectToRoute('app_index', []);
+        return $this->redirectToRoute('joke_index', []);
 
     }
 
@@ -137,10 +137,10 @@ class JokeController extends AbstractController
         $joke = $jokeRepository->findOneBy(['id' => $id]);
         $lousy = $joke->getLousy();
         $lousy += 1;
-        $joke->setFunny($lousy);
+        $joke->setLousy($lousy);
         $em = $this->getDoctrine()->getManager();
         $em->persist($joke);
         $em->flush();
-        return $this->redirectToRoute('app_index', []);
+        return $this->redirectToRoute('joke_index', []);
     }
 }
