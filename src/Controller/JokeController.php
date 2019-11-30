@@ -31,9 +31,9 @@ class JokeController extends AbstractController
     {
         $categories = $categoryRepository->findAll();
         if ($filter == 0) {
-            $jokes = $jokeRepository->findAll();
+            $jokes = $jokeRepository->findBy([], ['funny' => 'DESC']);
         } else {
-            $jokes = $jokeRepository->findBy(['category' => $filter]);
+            $jokes = $jokeRepository->findBy(['category' => $filter], ['funny' => 'DESC']);
         }
 
         return $this->render('joke/index.html.twig', [
