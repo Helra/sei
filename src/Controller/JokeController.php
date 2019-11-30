@@ -5,10 +5,14 @@ namespace App\Controller;
 use App\Entity\Joke;
 use App\Form\JokeType;
 use App\Repository\JokeRepository;
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * @Route("/joke")
@@ -96,5 +100,37 @@ class JokeController extends AbstractController
         }
 
         return $this->redirectToRoute('joke_index');
+    }
+
+    /**
+     * @Route("/{id}/incrementsfunny", name="joke_incrementsFunny", methods={"GET","POST"})
+     * @param Request $request
+     * @param Joke $joke
+     * @return Response
+     */
+    public function incrementsFunny(Request $request, Joke $joke, int $id, JokeRepository $jokeRepository, EntityManagerInterface $em): Response
+    {
+
+        $joke = $jokeRepository->findOneBy(['id' => $id]);
+        $funny = $joke->getFunny();
+        $funny += 1;
+        $joke->setFunny($funny);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($joke);
+        $em->flush();
+        return $this->redirectToRoute('app_index', []);
+
+    }
+
+    /**
+     * @Route("/{funny}/incrementslousy", name="joke_incrementsLousy", methods={"GET","POST"})
+     * @param Request $request
+     * @param Joke $joke
+     * @param ObjectManager $manager
+     * @return Response
+     */
+    public function lousy(Request $request, Joke $joke, ObjectManager $manager): Response
+    {
+
     }
 }
