@@ -3,7 +3,6 @@ body {
     min-height: 100vh;
     height: 100vh;
     background: linear-gradient(120deg, #5b7632, black);
-    background-attachment: fixed;
     font-family: Arial;
     overflow: hidden;
 }
@@ -13,7 +12,6 @@ h1, h2, h3 {
 }
 
 #home {
-    position: absolute;
     width: 100%;
     color: white;
     display: flex;
@@ -153,6 +151,16 @@ input {
 .btn {
     margin: 10px 0;
     animation: pop 1s cubic-bezier(0.075, 1.15, 0.75, 1) forwards;
+}
+
+select#joke_category
+{
+    background: transparent;
+    border: none;
+    border-bottom: solid 3px black;
+    color: black;
+    padding: 10px 5px;
+    animation: pop 5s cubic-bezier(0.075, 1.15, 0.75, 1) forwards;
 }
 
 select#joke_category

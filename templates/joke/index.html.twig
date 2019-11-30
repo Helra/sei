@@ -14,8 +14,7 @@
                     <div class="bottom">
                         <h4 class="like">{{ joke.funny }} </h4>
                         <h4 class="dislike">{{ joke.lousy }}</h4>
-                        <h3 class="author">
-                        </h3>
+                        <h3 class="author">{{ joke.category.name }}</h3>
                     </div>
                     <div class="bottom">
                         <button>Like</button>
@@ -25,13 +24,6 @@
                 </li>
             </ul>
         </div>
-{#            <tr>#}
-{#                <td>{{ joke.id }}</td>#}
-{#                <td>{{ joke.firstname }}</td>#}
-{#                <td>{{ joke.lastname }}</td>#}
-{#                <td>{{ joke.funny }}</td>#}
-{#                <td>{{ joke.lousy }}</td>#}
-{#            </tr>#}
         {% else %}
             <tr>
                 <td colspan="8">no records found</td>
