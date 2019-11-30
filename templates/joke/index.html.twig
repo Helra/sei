@@ -3,43 +3,36 @@
 {% block title %}Joke index{% endblock %}
 
 {% block body %}
-    <h1>Joke index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Quote</th>
-                <th>Funny</th>
-                <th>Lousy</th>
-                <th>Image</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<section id="home">
+    <h1 id="home-title">SEI</h1>
         {% for joke in jokes %}
-            <tr>
-                <td>{{ joke.id }}</td>
-                <td>{{ joke.firstname }}</td>
-                <td>{{ joke.lastname }}</td>
-                <td>{{ joke.quote }}</td>
-                <td>{{ joke.funny }}</td>
-                <td>{{ joke.lousy }}</td>
-                <td>{{ joke.image }}</td>
-                <td>
-                    <a href="{{ path('joke_show', {'id': joke.id}) }}">show</a>
-                    <a href="{{ path('joke_edit', {'id': joke.id}) }}">edit</a>
-                </td>
-            </tr>
+        <div id="quotes">
+            <ul>
+                <li>
+                    {{ joke.quote }}
+                    <div class="bottom">
+                        <button>Like</button>
+                        <button>Dislike</button>
+                        <h3 class="author">{{ joke.firstname }} {{ joke.lastname }}</h3>
+                    </div>
+                </li>
+            </ul>
+        </div>
+{#            <tr>#}
+{#                <td>{{ joke.id }}</td>#}
+{#                <td>{{ joke.firstname }}</td>#}
+{#                <td>{{ joke.lastname }}</td>#}
+{#                <td>{{ joke.funny }}</td>#}
+{#                <td>{{ joke.lousy }}</td>#}
+{#            </tr>#}
         {% else %}
             <tr>
                 <td colspan="8">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
+    <button id="create-button"><a href="{{ path('joke_new') }}">Je veux creer une citation pas trop longue ........</a></button>
+</section>
 
-    <a href="{{ path('joke_new') }}">Create new</a>
+
 {% endblock %}

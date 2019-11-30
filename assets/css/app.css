@@ -28,7 +28,7 @@ h1, h2, h3 {
 }
 
 #quotes {
-    margin-top: 4em;
+    margin-top: 1em;
 }
 
 ul {
@@ -102,4 +102,55 @@ ul li {
     }
 }
 
+#create-button a
+{
+    text-decoration: none;
+    color : black;
+}
 
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 800px;
+}
+
+form .row {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 500px;
+}
+
+.row .col div {
+    display: flex;
+    flex-direction: column;
+    margin: 5px 0;
+}
+
+textarea#joke_quote {
+    background: transparent;
+    border: none;
+    border-bottom: solid 3px black;
+    width : 500px;
+    resize: none;
+    height: 50px;
+    color: white;
+    animation: pop 3s cubic-bezier(0.075, 1.15, 0.75, 1) forwards;
+}
+
+input {
+    background: transparent;
+    border: none;
+    border-bottom: solid 3px black;
+    color: white;
+    padding: 10px 5px;
+    animation: pop 5s cubic-bezier(0.075, 1.15, 0.75, 1) forwards;
+}
+
+.btn {
+    margin: 10px 0;
+    animation: pop 1s cubic-bezier(0.075, 1.15, 0.75, 1) forwards;
+}

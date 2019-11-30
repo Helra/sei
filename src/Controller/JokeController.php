@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/joke")
+ * @Route("")
  */
 class JokeController extends AbstractController
 {
@@ -35,8 +35,11 @@ class JokeController extends AbstractController
     public function new(Request $request): Response
     {
         $joke = new Joke();
+        $joke->setFunny(0);
+        $joke->setLousy(0);
         $form = $this->createForm(JokeType::class, $joke);
         $form->handleRequest($request);
+
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();

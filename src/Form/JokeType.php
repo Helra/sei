@@ -15,9 +15,6 @@ class JokeType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('quote')
-            ->add('funny')
-            ->add('lousy')
-            ->add('image')
             ->add('category', null, ['choice_label' => 'name'])
         ;
     }
