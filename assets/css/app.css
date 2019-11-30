@@ -229,7 +229,14 @@ h4.dislike
     padding: 0;
 }
 
-.filterLink {
+a.filterLink {
     width: 100%;
     height: 100%;
+    color: white;
+    font-size: 20px;
+
+}
+li.filter {
+    background: none;
+    border : none;
 }
