@@ -154,3 +154,23 @@ input {
     margin: 10px 0;
     animation: pop 1s cubic-bezier(0.075, 1.15, 0.75, 1) forwards;
 }
+
+select#joke_category
+{
+    background: transparent;
+    border: none;
+    border-bottom: solid 3px black;
+    color: black;
+    padding: 10px 5px;
+    animation: pop 5s cubic-bezier(0.075, 1.15, 0.75, 1) forwards;
+}
+
+h4.like
+{
+    margin: 20px;
+}
+
+h4.dislike
+{
+    margin: 35px;
+}
