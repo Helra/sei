@@ -7,20 +7,23 @@
 <section id="home">
     <a href="{{ path('joke_new') }}"><button id="create-button">Je veux creer une citation pas trop longue ........</button></a>
     <h1 id="home-title">SEI</h1>
+    <img class="logoWild" src="{{ asset('build/images/wild.c3e2105d.png') }}">
         {% for joke in jokes %}
         <div id="quotes">
             <ul>
                 <li>
                     {{ joke.quote }}
                     <div class="bottom">
-                        <h4 class="like">{{ joke.funny }} </h4>
-                        <h4 class="dislike">{{ joke.lousy }}</h4>
                         <h3 class="author">{{ joke.category.name }}</h3>
                     </div>
                     <div class="bottom">
-                        <a href="{{ path('joke_incrementsFunny', {'id': joke.id}) }}"><button>Drôle</button></a>
-                        <a href="{{ path('joke_incrementsLousy', {'id': joke.id}) }}"><button>Nulle</button></a>
-                        <h3 class="author">{{ joke.firstname }} {{ joke.lastname }}</h3>
+                        <a class="faIcon" href="{{ path('joke_incrementsFunny', {'id': joke.id}) }}">
+                            <i class="far fa-thumbs-up fa-2x"></i></a>
+                        <h4 class="like">{{ joke.funny }} </h4>
+                        <a class="faIcon" href="{{ path('joke_incrementsLousy', {'id': joke.id}) }}">
+                            <i class="far fa-thumbs-down fa-2x"></i></a>
+                        <h4 class="dislike">{{ joke.lousy }}</h4>
+                        <h3 class="author name">Postée par {{ joke.firstname }} {{ joke.lastname }}</h3>
                     </div>
                 </li>
             </ul>

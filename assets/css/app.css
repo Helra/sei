@@ -4,7 +4,7 @@ body {
     height: 100vh;
     background: linear-gradient( #337f44, black);
     background-attachment: fixed;
-    font-family: Arial;
+    font-family: Lato;
 }
 
 h1, h2, h3 {
@@ -63,6 +63,10 @@ ul li {
     justify-content: flex-end;
     width: 100%;
     justify-self: flex-end;
+}
+
+.name {
+    font-style: oblique;
 }
 
 #create-button {
@@ -191,4 +195,18 @@ h4.dislike
 .button_next
 {
     margin : 40px;
+}
+
+.faIcon {
+    cursor: pointer;
+    text-decoration: none;
+    color: #337f44;
+}
+
+.logoWild {
+    position: absolute;
+    top: 15vh;
+    right: 5vw;
+    object-fit: contain;
+    transform: rotate(35deg);
 }
