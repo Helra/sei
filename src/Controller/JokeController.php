@@ -17,6 +17,8 @@ class JokeController extends AbstractController
 {
     /**
      * @Route("/", name="joke_index", methods={"GET"})
+     * @param JokeRepository $jokeRepository
+     * @return Response
      */
     public function index(JokeRepository $jokeRepository): Response
     {
