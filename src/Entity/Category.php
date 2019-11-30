@@ -21,16 +21,16 @@ class Category
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $category;
+    private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Joke", mappedBy="category")
+     * @ORM\OneToMany(targetEntity="App\Entity\Joke", mappedBy="category", orphanRemoval=true)
      */
-    private $category_id;
+    private $jokes;
 
     public function __construct()
     {
-        $this->category_id = new ArrayCollection();
+        $this->jokes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -38,14 +38,14 @@ class Category
         return $this->id;
     }
 
-    public function getCategory(): ?string
+    public function getName(): ?string
     {
-        return $this->category;
+        return $this->name;
     }
 
-    public function setCategory(string $category): self
+    public function setName(string $name): self
     {
-        $this->category = $category;
+        $this->name = $name;
 
         return $this;
     }
@@ -53,37 +53,28 @@ class Category
     /**
      * @return Collection|Joke[]
      */
-    public function getCategoryId(): Collection
+    public function getJokes(): Collection
     {
-        return $this->category_id;
+        return $this->jokes;
     }
 
-    /**
-     * @param Joke $categoryId
-     * @return Category
-     */
-
-    public function addCategoryId(Joke $categoryId): self
+    public function addJoke(Joke $joke): self
     {
-        if (!$this->category_id->contains($categoryId)) {
-            $this->category_id[] = $categoryId;
-            $categoryId->setCategory($this);
+        if (!$this->jokes->contains($joke)) {
+            $this->jokes[] = $joke;
+            $joke->setCategory($this);
         }
 
         return $this;
     }
-    /**
-     * @param Joke $categoryId
-     * @return Category
-     */
 
-    public function removeCategoryId(Joke $categoryId): self
+    public function removeJoke(Joke $joke): self
     {
-        if ($this->category_id->contains($categoryId)) {
-            $this->category_id->removeElement($categoryId);
+        if ($this->jokes->contains($joke)) {
+            $this->jokes->removeElement($joke);
             // set the owning side to null (unless already changed)
-            if ($categoryId->getCategory() === $this) {
-                $categoryId->setCategory(null);
+            if ($joke->getCategory() === $this) {
+                $joke->setCategory(null);
             }
         }
 
